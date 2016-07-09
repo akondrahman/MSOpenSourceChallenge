@@ -1,0 +1,2 @@
+set sent2vec=..\bin\sent2vec.exe
+%sent2vec% /inSrcModel dssm_model\smodel /inSrcVocab dssm_model\vocab /inSrcModelType DSSM /inTgtModel dssm_model\tmodel /inTgtVocab dssm_model\vocab /inTgtModelType DSSM /inFilename 2.tsv /outFilenamePrefix 2_tsv_dssm_out
