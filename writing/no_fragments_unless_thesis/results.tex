@@ -1,0 +1,224 @@
+\section{Results}
+
+We organize this section as following: first we present summary findings that we extracted from the dataset to provide an overview of the dataset in use. Next, we answer the three research questions in three different subsections. 
+The total size of the dataset is 1.20 Gigabytes. We extracted the programming traces of 339 programmers using our JavaScript program as mentioned in Section 3. After extracting the dataset we observe that there are 84, 030 programming sessions. 
+According to our analysis 95\%, of the files used by the 339 programmers were C\# files.   
+We also observe that the count of high productive sessions decrease with increase in window length. For example, according to Figure~\ref{high_prod_sess} the count of `high' productive sessions are lowest when a window duration is 30 minutes. We also observe that the count of `high' productive sessions starts to decrease when we increase the window duration for five minutes or more. 
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.30]{img/general_prod.png}
+\caption{Count of `high' programming sessions vary with window size}
+\label{high_prod_sess}
+\end{figure}
+
+In the following subsections we provide empirical findings related to the research questions of interest.  
+\subsection{RQ1}
+Applying our methodology identify four types of switching that are presented below with definitions.
+\begin{itemize}
+\item{Domain Switching: We define the activity of switching from one domain to another as domain switching.}
+\item{File Switching: We define the activity of switching from one file to another for inside a domain as file switching.}
+\item{Namespace Switching: We define the activity of switching from one namespace to another within a file as namespace switching.}
+\item{State Switching: We define the activity of switching from one state to another as state switching.}
+\end{itemize}
+
+We use Figure~\ref{rq1-mean} to present the mean occurrence amount of each of the four identified context switches. The X and Y axis of Figure ~\ref{rq1-mean} presents the type of context switch, and the mean amount of context switch respectively. We illustrate the variability in the amount of occurrences for each type of switch in Figure~\ref{rq1-var-5}, and ~\ref{rq1-var-15}. Due to space constraints we only present relevant findings for two windows of duration five and 15 minutes, respectively. 
+ 
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.30]{img/rq1-mean.png}
+\caption{Amount of different types of context switches}
+\label{rq1-mean}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.30]{img/rq1-5.png}
+\caption{Amount of different types of context switches}
+\label{rq1-var-5}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.30]{img/rq1-15.png}
+\caption{Amount of different types of context switches}
+\label{rq1-var-15}
+\end{figure} 
+ 
+%Next in Table~\ref{RQ1} we answer the seocnd part of RQ1 by presenting relvant empirical findings. We sumamrize these findigns using a tuple 
+%in each cell that presents the mean, median, and standard deviation of the frequency 
+%for a certain type fo context switch. Fro example, from Table~\ref{RQ1} 
+%we observe that the mean, median, and standard deviation of file switching 
+%occurarneces respectively is x, y, and z for a five minute window in session where programmers are more porductive.  
+%
+%\begin{table}
+%\caption{Amount of different types of context switches}
+%\label{RQ1}
+%%\small
+%\tabcolsep=0.11cm
+%\begin{tabular}{|c|c|c|c|c|}
+%  \hline
+%   & Domain  & File  & Namespace  &  State  \\
+%  \hline
+%  1 & (3.97,2.00,7.15) & (0.73,0.60,0.77) & (0.16,0.0,0.34) & (0.74,0.57,0.74)\\
+%  \hline
+%  5 & (13.03,8.00,16.87) & (4.36,4.00, 2.79) & (1.38,1.00,1.38) & (3.31,3.05,1.99)\\
+%  \hline
+%  10 & (23.73,15.5,26.95) & (9.09,8.50,4.82) & (3.16,2.79,2.37) & (5.79,5.68,3.08)\\
+%  \hline
+%  15 & (32.38,20.78,36.53) & (13.80,13.00,6.75) & (4.94,4.43,3.37) & (7.59,7.56,3.94)\\
+%  \hline  
+%  30 & (44.19,28.44,46.21) & (26.24,25.50,13.09) & (9.43,9.00,5.77) & (11.02,11.00,6.33)\\
+%  \hline    
+%  \end{tabular} 
+%\end{table} 
+
+From Figures~\ref{rq1}, ~\ref{rq1-var-5}, and ~\ref{rq1-var-15} we
+observe that the amount of domain switches is larger and more variable compared to the other types of switches. From Figure~\ref{rq1} we observe that the mean amount of project switches, and namespaces switches is respectively the largest, and smallest amongst all four switches, for all windows of interest. From both Figures~\ref{rq1-var-15, rq1-var-15} we observe that with respect to number of outliers and spread, the amount of project switches is more variable compared to the other three switches. 
+
+
+
+\subsection{RQ2}
+
+We answer RQ2 providing empirical findings 
+in the following two subsections. First we present our findings for individual programmers, then we present our findings for all 339 programmers. 
+\subsubsection{Effects of switches for individual programmers}
+We realize that presenting the effects of the four types of switches on high productivity is non-trivial, and therefore we present a summarized version of our findings in Figures~\ref{rq2-5} and ~\ref{rq2-15}. We use Figures~\ref{rq2-5} and~\ref{rq2-15} to observe if the effects of different switches are similar for majority of the programmers. Such observation can also hint at the generalizability of the effect amongst different programmers. Figures~\ref{rq2-5} and ~\ref{rq2-15} correspond to 
+the findings for a window duration of five minutes, and 15 minutes respectively. 
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.30]{img/rq2-5.png}
+\caption{Effects of switches: five minute window}
+\label{rq2-5}
+\end{figure}
+
+Both Figures~\ref{rq2-5} and ~\ref{rq2-15} present the count of programmers belonging to three categories for each of the four switches: `significant', `moderate', or `negative'. `Significant', `Moderate', and `Negative' respectively presents the count of programmers for which the Pearson correlation coefficient is  at least 0.50, positive but less than 0.50, and less than zero. The p-value for all the three categories are less than or equal to 0.05. Please recall from Section 3 that we applied Pearson correlation coefficient between the \textit{high productivity vector} and each of the \textit{switch\_x vectors}.  
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.30]{img/rq2-15.png}
+\caption{Effects of switches: 15 minute window}
+\label{rq2-15}
+\end{figure}
+
+
+From Figure~\ref{rq2-15} we observe that 84 and 70 programmers respectively exhibit `Significant', and `Moderate' trends for file switches. For file switching the count of programmers drops drastically to 8 for `negative' category. Namespace switching 
+also shows similar trends, where the count of programmers is least for the `negative'
+category. The trend is inverse for state switches; for this switch the count of programmers are highest for `negative' amonhgst the three categories.  
+
+The observations from Figure~\ref{rq2-15}, is applicable for Figure~\ref{rq2-5} as well. According to Figure~\ref{rq2-5} we observe that majority of the programmers fall in the `significant', and `moderate' categories, for file and namespace switches. For state switches the trend is opposite; the count of programmers belonging to the `negative' category is bigger compared to `significant', and `moderate'. Our observations from Figures~\ref{rq2-5} and ~\ref{rq2-15} suggest that effects of file switches are similar to namespace switches, but opposite to state switches. From both figures we also observe that domain switches do not exhibit any specific trend unlike file, namespace, or state switches.       
+  
+
+
+
+
+\subsubsection{Effects of switches for 339 Programmers}  
+
+In Table~\ref{general-corr} we present our findings with respect to general correlation for two different window durations. For space constraints we present our findings for windows of five minutes and 15 minutes. In Table~\ref{general-corr}, the column `Corr. Coeff' presents the correlation co-efficient for a one of the four types of context switching namely, domain switching, file switching, namespace switching, and state switching. The column `P-Value' column presents the p-value for that particular correlation co-efficient. For example, considering window duration of five minutes 
+the Pearson and Spearman correlation coefficient for file switches is respectively 0.45, and 0.45.  
+
+\begin{table*}[htp]
+\caption{What are the effects of different types of context switches on high productivity?}
+\label{general-corr}
+\small
+\begin{tabular}{|p{1.7cm}|c|c|c|c|c|c|c|c|c|}
+  \hline
+   & \multicolumn{4}{c|}{Five Minutes}  &  \multicolumn{4}{c|}{15 Minutes} \\
+  \hline
+  Type of Switch & \multicolumn{2}{c|}{Pearson}  &  \multicolumn{2}{c|}{Spearman} & \multicolumn{2}{c|}{Pearson}  &  \multicolumn{2}{c|}{Spearman} \\
+  \hline
+  Type & Corr. Coeff. & P-Value & Corr. Coeff. & P-Value & Corr. Coeff. & P-Value & Corr. Coeff. & P-Value \\
+  \hline
+  Domain  & 0.38 & 0.0 & 0.28 & 0.0 &  -0.03 & 0.03 & -0.09 & $1.29*10^{-07}$  \\
+  \hline
+  File  & 0.45 & 0.0 & 0.45 & 0.0 & 0.34 & $1.26*10^{-99}$ & 0.30  & $3.75*10^{-76}$  \\
+  \hline
+  Namespace  & 0.42 & 0.0 & 0.39 & 0.0 & 0.28 & $6.87*10^{-65}$ & 0.23 & $1.47*10^{-45}$  \\
+  \hline
+  State  & 0.00 & 0.83 & -0.10 & $1.74*10^{-56}$ & -0.36 &  $8.50*10^{-108}$ & -0.40 & $1.93*10^{-135}$  \\
+  \hline
+  \hline
+  \end{tabular}
+\end{table*}
+
+From Table~\ref{general-corr} we observe empirical findings that are similar to what we observed at individual level. We observe that for both windows of different duration lengths, both file switches and namespace switches 
+exhibit positive correlations. On the other hand, state switches exhibit negative correlation for the 15 minute window duration, and also for five minute duration ignoring the Pearson coefficient with a p-value >0.05. Similar to our observations studying individual programmers, we cannot conclude the effect of domain switching as it exhibits both positive and negative correlations for different window durations. Observations from Table~\ref{general-corr}, and Figures~\ref{rq2-5},~\ref{rq2-15} hint that file switches and namsepace switches might have a positive effect on high productivity, whereas the effect of state switches might be negative for high productivity.          
+
+
+
+\subsection{RQ3}
+
+We use table ~\ref{rq3} to present our findings related to RQ3. In Table~\ref{rq3}, `A',`D', and `I' respectively denotes `Advantageous', `Disadvantageous', and `Inert'. Table ~\ref{rq3} presents how the four of the context switches are indentified in terms of being advantegous, disadvantageous, or inert. We used a set of conditions to determine whether or not a switch is advatageous or disadvantageous. If a condition is satisfied then we place a \cmark for that particular window and context switch. If a condition is not satisfied then place a \xmark. Table ~\ref{rq3} includes the findings for linearity where we used Pearson and Spearman correlation coefficients. For each window size we determine if a context switch is advantageous or disadvantageous indicated in the \textit{Decision} row of Table~\ref{rq3}. The final decision on whether or not a context switch is advantageous or disadvantageous is presented in the \textbf{Final decision} row.  
+ 
+\begin{table}[htp]
+\caption{Identifying beneficial and detrimental context switches}
+\label{rq3}
+\small
+\begin{tabular}{|p{1.3cm}|p{1.3cm}|p{1.3cm}|p{1.3cm}|p{1.3cm}|p{1.3cm}|}
+  \hline
+    & Domain switching & File switching & Namespace switching & State switching \\
+  \hline
+  One Minute &  
+  \shortstack{C1-A: \cmark \\ C2-A: \cmark \\ C1-D: \xmark \\ C2-D: \xmark} & 
+  \shortstack{C1-A: \cmark \\ C2-A: \cmark \\ C1-D: \xmark \\ C2-D: \xmark} & 
+  \shortstack{C1-A: \cmark \\ C2-A: \cmark \\ C1-D: \xmark \\ C2-D: \xmark} & 
+  \shortstack{C1-A: \cmark \\ C2-A: \cmark \\ C1-D: \xmark \\ C2-D: \xmark} \\
+  \hline          
+  \textit{Decision} & \textit{A} & \textit{A} &
+  \textit{A} &  \textit{A} \\     
+  \hline
+  Five Minutes &  
+  \shortstack{C1-A: \cmark \\ C2-A: \cmark \\ C1-D: \xmark \\ C2-D: \xmark} & 
+  \shortstack{C1-A: \cmark \\ C2-A: \cmark \\ C1-D: \xmark \\ C2-D: \xmark} & 
+  \shortstack{C1-A: \cmark \\ C2-A: \cmark \\ C1-D: \xmark \\ C2-D: \xmark} & 
+  \shortstack{C1-A: \xmark \\ C2-A: \xmark \\ C1-D: \xmark \\ C2-D: \xmark} \\
+  \hline          
+  \textit{Decision} & \textit{A} & \textit{A} &
+  \textit{A} &  \textit{I} \\       
+  \hline
+  10 Minutes &  
+  \shortstack{C1-A: \xmark \\ C2-A: \xmark \\ C1-D: \xmark \\ C2-D: \xmark} & 
+  \shortstack{C1-A: \cmark \\ C2-A: \cmark \\ C1-D: \xmark \\ C2-D: \xmark} & 
+  \shortstack{C1-A: \cmark \\ C2-A: \cmark \\ C1-D: \xmark \\ C2-D: \xmark} & 
+  \shortstack{C1-A: \xmark \\ C2-A: \xmark \\ C1-D: \cmark \\ C2-D: \cmark} \\
+  \hline          
+  \textit{Decision} & \textit{I} & \textit{A} &
+  \textit{A} &  \textit{D} \\       
+  \hline  
+  15 Minutes &  
+  \shortstack{C1-A: \xmark \\ C2-A: \xmark \\ C1-D: \xmark \\ C2-D: \xmark} & 
+  \shortstack{C1-A: \cmark \\ C2-A: \cmark \\ C1-D: \xmark \\ C2-D: \xmark} & 
+  \shortstack{C1-A: \cmark \\ C2-A: \cmark \\ C1-D: \xmark \\ C2-D: \xmark} & 
+  \shortstack{C1-A: \xmark \\ C2-A: \xmark \\ C1-D: \cmark \\ C2-D: \cmark} \\
+  \hline          
+  \textit{Decision} & \textit{I} & \textit{A} &
+  \textit{A} &  \textit{D} \\        
+  \hline  
+  30 Minutes &  
+  \shortstack{C1-A: \xmark \\ C2-A: \xmark \\ C1-D: \xmark \\ C2-D: \xmark} & 
+  \shortstack{C1-A: \cmark \\ C2-A: \cmark \\ C1-D: \xmark \\ C2-D: \xmark} & 
+  \shortstack{C1-A: \xmark \\ C2-A: \cmark \\ C1-D: \xmark \\ C2-D: \xmark} & 
+  \shortstack{C1-A: \xmark \\ C2-A: \xmark \\ C1-D: \cmark \\ C2-D: \cmark} \\
+  \hline          
+  \textit{Decision} & \textit{I} & \textit{A} &
+  \textit{I} &  \textit{D} \\    
+  \hline     
+  \hline  
+  \textbf{Final decision} & \textbf{I} & \textbf{A} &
+  \textbf{A} &  \textbf{D} \\
+  \hline    
+  \hline
+  \end{tabular}
+\end{table}
+
+From Table~\ref{rq3} we observe that file switches, and namespace switches are advatageous for productvity, whereas, state switches are disadvantageous. According to our analysis from non linear correlation coeffcients all switches were marked as inert for all five windows. 
+
+
+
+
+
+
+
+
+

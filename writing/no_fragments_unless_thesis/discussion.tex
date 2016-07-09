@@ -1,0 +1,191 @@
+\section{Discussion}
+In this section we discuss our findings by stating the implications of our findings for programmers and researchers.  
+
+%\subsection{Programmer Perspective}
+%We state the following implications that might be relevant to programmers: 
+
+\begin{itemize}
+\begin{item}
+From Figure 1 we observe the count of high productive sessions drops when window duration is greater than five or more minutes. The count of high productive sessions drops to as low as 0.65\%
+when considering a window duration of 30 minutes. With the increase in window duration count of hih productive sessions decreases. As we use count of programming actions to determine productivity, this finding suggests that 
+programmers perform more programming related tasks for smaller periods of time. 
+
+\fbox{\begin{minipage}{22em}
+\textbf{Observation-1}: Programmers do not engage heavily in programming related tasks for longer periods of time e.g. for a duration of 15 or 30 minutes. 
+\end{minipage}}
+     
+\end{item}
+
+\begin{item}
+Compared to the amount of file and namespace switches the amount of 
+domain switches were larger and had a wider spread. According to our definition and assumption detecion of domain switches is less restrictive 
+than that of file and namespace switches, and this factor can have an impact on the findings. 
+
+We observe the mean and median amount of state switching is smaller than that of file switches for four of the five windows. Compared to file swithes the detection procedure is less restrictive and this finding suggests that compared to artifact switching such as file switches, state switching happens less frequently when programmners are highly productive.  
+
+\fbox{\begin{minipage}{22em}
+\textbf{Observation-2}: Programmers switch less frequently between programming activities such as coding and debugging when they are more productive. 
+\end{minipage}}
+     
+\end{item}
+
+\begin{item}
+
+From our analysis of RQ3 we observe that file and namespace switches 
+are idnetified as advantagous switches, whereas state switches are identified as disadvanatageous. From Table 2 we also observe that state switches have been identified for windows that have duration of 10 minutes or more, even though file and namespace switches have been identifed as advantageous for at least four windows. We also observe that the count of programmers that belong in the `negative' category increases from 54 to 72, when window duraion is increased from five minutes to 10 minutes. These findings suggest that the disadvatagous effects of state switching can be realized when programmers 
+remain highly productive for longer periods of time.        
+       
+\fbox{\begin{minipage}{22em}
+\textbf{Observation-3}:  
+State switches might effect more negatively on productivity when programmers are more productive for larger durations. 
+\end{minipage}}
+     
+\end{item}
+
+\begin{item}
+We acknowledge that our detection and quantifying procedure of domain switching is less restrictive than that of file and namespaces switches. From the previous section we have observed how wide the variability is the amount of domain switches compared to file and namespace switches. With respect tovariability, the amount of file and namespace switches might benefit from the comparatively restricted detection and quantifying procedure. We do not claim that our approach is perfect and we observe the necessity of performing future research studies in this direction.                   
+       
+\fbox{\begin{minipage}{22em}
+\textbf{Observation-4}:  
+Future research studies can investigate even further to indentify the appropriate procedure for detecting and quantifying different switches.      
+\end{minipage}}
+     
+\end{item}
+
+
+
+\begin{item}
+
+We have observed specific trends for file, namespace, and state switches from our analysis of RQ2. These trends hold for a subset of the 339 programmers but not all the 339 programmers. Ideally we would expect the trends to hold for all 339 programmers. We performed hypothesis tests to investigate why the trends are holding for a specific set of programmers only. According to our hypothesis test, we can state with 99\% statistical confidence that the average count of high productive sessions was                        
+different between the two groups of programmers: one group of programmers for which we observed trends and the other group for which we did not observe any trend. We identify average count of high productive sessions as one of the factors that can expain the difference. 
+
+But there can be other clues specific to the programmers' nature of productivity that we did not explore in this paper.  
+        
+\fbox{\begin{minipage}{22em}
+\textbf{Observation-5}:  
+
+Future empirical studies can investigate if a specific switch has generalizable impact across all programmers and the factors that explain       
+such phenomenon. 
+\end{minipage}}
+     
+\end{item}
+
+
+\begin{item}  
+
+From Table 2 we also observe that file and namespace swithes are idnetified advanatageous for four or more windows. For state switches we have a different observation. State switches have been identified 
+disadvantageous for windows that have a duration of 10 or more minutes. This finding suggests that to assess the effect for some switches require longer periods of time. For example, if we have used windows of duration less than ten minutes then we could ahve identified state switches as adavantageous or inert.    
+        
+\fbox{\begin{minipage}{22em}
+\textbf{Observation-6}:  
+Spcific types of switches may exhibit their effects for larger durations of time. Thus, experimentation with various durations might assist in assessing
+the effects of different switches effectively and accurately.       
+\end{minipage}}
+     
+\end{item}
+
+\end{itemize}
+
+
+%From our analysis of general correlation, and correlation analysis of
+%individual users we have observed a relatively stronger correlation
+%between namespace switching and high productivity, as well as file switching,
+%and high productivity. We also have concluded that to observe the correlation
+%of different types of switching and high productivity, a relatively larger window size
+%can be helpful. From these observations we investigate the frequency of different
+%types of context switching that can happen for a specific window size. As an illustrative
+%example, we discuss relevant findings for a window of 10 minutes.
+%
+%For a window of 10 minutes, for 339 users we have observed a correlation co-efficient
+%of 0.36 between frequency of namespace switching and high productivity. For the same window
+%duration we also have observed that the 80[need exact count] for 80 users the correlation co-efficient
+%is greater than or equal to 0.50. From Figure~\ref{disc_p_ns} for these users we observe that the
+%average, and median frequency of namespace switching both is five[need exact], in case of high productive sessions. For 60[need exact count] users the correlation coefficient of interest lies between
+%0.00 and 0.499, and for these users the average, and median both lies around two for
+%high productive sessions. For 10[need exact count] users the correlation coefficient of interest is negative and for these users the average, and median both is less than two. Using Vargha and Delaney's A12 test statistic~\cite{vargha:a12}, the statistical difference between the frequency of namespace switching for negatively correlated users is `large', and `medium' respectively to that of the frequency of namespace switching for 80 users, and 60 users. This finding
+%hints that programmers' switch namespaces at different frequencies, and for this dataset we observe the frequency to be around five for a ten minute window.
+%
+%\begin{figure}[htbp]
+%\centering
+%\includegraphics[scale=0.30]{img/disc_p_ns.png}
+%%\includegraphics[scale=0.30]{img_pdf/disc_p_ns.pdf}
+%\caption{Frequency of Namespace Switching for High Productive Sessions}
+%\label{disc_p_ns}
+%\end{figure}
+%
+%For a window of 10 minutes, for 339 users we have observed a correlation co-efficient
+%of 0.40 between frequency of file switching and high productivity. We have observed that for 120[need exact count] users the correlation co-efficient
+%is greater than or equal to 0.50. From Figure~\ref{disc_p_fs} for these users we observe that the
+%average, and median frequency of namespace switching respectively  is 20[need exact], in case of high productive sessions. For 80[need exact count] users the correlation coefficient of interest lies between
+%0.00 and 0.499, and for these users the average, and median is respectively 20[need exact] for
+%high productive sessions. For five[need exact count] users the correlation coefficient of interest is negative and for these users the average, and median both is 20. Using Vargha and Delaney's A12 test statistic~\cite{vargha:a12}, the statistical difference between the frequency of namespace switching for negatively correlated users is `small' for both cases: the frequency of namespace switching for 120 users, and 80 users. This finding hints that programmers' switches from one file to another at a similar frequency, and for this dataset we observe it that to be around 20 for a ten minute window.
+%
+%\begin{figure}[htbp]
+%\centering
+%\includegraphics[scale=0.30]{img/disc_p_fs.png}
+%%\includegraphics[scale=0.30]{img_pdf/disc_p_fs.pdf}
+%\caption{Frequency of File Switching for High Productive Sessions}
+%\label{disc_p_ns}
+%\end{figure}
+%
+%For a window of 10 minutes, for 339 users we have observed a correlation co-efficient
+%of 0.09 between frequency of domain switching and high productivity. Compared to namespace switching, and file
+%switching the correlation co-efficient is small, indicating a weak correlation between
+%high productivity and domain switching. We also have observed that the count of users
+%for which the correlation co-efficient is greater than 0.50 is only 40 out of 339 users.
+%From Figure~\ref{disc_p_ps} for these users we observe that the
+%average, and median frequency of namespace switching respectively  is 20[need exact]. For 40[need exact count] users the correlation coefficient of interest lies between
+%0.00 and 0.499, and for these users the average, and median is respectively 20[need exact] for
+%high productive sessions. For 30[need exact count] users the correlation coefficient of interest is negative and for these users the average, and median both is 20. Using Vargha and Delaney's A12 test statistic~\cite{vargha:a12}, the statistical difference between the frequency of namespace switching for negatively correlated users is `medium' for both cases: the frequency of domain switching for the other two sets of users. This finding hints that programmers' switches from one project context or domain to another at different frequencies.
+%
+%\begin{figure}[htbp]
+%\centering
+%\includegraphics[scale=0.30]{img/disc_p_ds.png}
+%%\includegraphics[scale=0.30]{img_pdf/disc_p_ds.pdf}
+%\caption{Frequency of Domain Switching for High Productive Sessions}
+%\label{disc_p_ds}
+%\end{figure}
+%
+%Namespace switching is detected when programmer switches from one namespace to another inside a file. File switching is detected when programmer switches from file another inside a project context or domain. For file switching and namespace switching, we have observed higher general correlations compared to that of domain switching. Also, the number of users showing a correlation greater than 0.50 is higher for both types
+%of switching than that of domain switching. This finding indicates that while maintaining high productivity programmers switch between artifacts that belong to the same domain or project context. [Can we add related findings from a relevant paper or other resource? - Dr.Parnin] Future studies can investigate if similar observation holds using different datasets or a different productivity calculation method. If this particular observation holds then programmers can be encouraged to switch more at local levels of project artifacts and switch less in between domains. In a similar fashion empirical studies can also recommend how frequently programmers can switch between files, namespaces or domains.
+%
+%Compared to namespace switching we also observe the frequencies of file switching and domain switching to be higher for a window of ten minutes. This observation indicates that while maintaining high productivity programmers' perform tasks at small segments of code that can span across different files or different domains. [Can we add related findings from a relevant paper or other resource? - Dr.Parnin] If future or existing empirical studies
+%confirm this finding then programmers can be encouraged to work on smaller segments of code residing in a single
+%file while remaining highly productive. IDE plugins can track relevant information and recommend programmers to focus their effort on smaller pieces of code rather than writing
+%larger chunks of code when they are highly productive.
+%
+%
+%\subsection{What is the Frequency of Switching Between States When Programmers are Highly Productive?}
+%
+%For a window of 10 minutes, for 339 users we have observed a correlation co-efficient
+%of -0.22 between frequency of state switching and high productivity. The correlation co-efficient is negative
+%for this type of context switching indicating switching between programming states namely coding, debugging, and building can be counter productive. We also have observed that the count of users
+%for which the correlation co-efficient is greater than 0.50 is only five out of 339 users, whereas the
+%correlation co-efficient is negative for 99[need exact] users.
+%From Figure~\ref{disc_p_ss} we observe that the
+%average, and median frequency of namespace switching for these users respectively  is five, and nine[need exact]. For 11[need exact count] users the correlation coefficient of interest lies between
+%0.00 and 0.499, and for these users the average, and median is respectively three, and seven[need exact] for
+%high productive sessions. For 90[need exact count] users the correlation coefficient of interest is negative and for these users the average, and median respectively is four, and 12 [need exact]. Using Vargha and Delaney's A12 test statistic, the statistical difference between the frequency of namespace switching for negatively correlated users is `small' for both cases: the frequency of state switching for the other two sets of users. Statistically
+%we conclude that there is no significant support that the frequency of switching states differs from one group
+%of users to other, we observe that the average frequency of state switching occurs is widely
+%spread for users that show a negative correlation between high productivity and state switching. Our empirical findings 
+%state that 46.38\%, 23.49\%, and 11.67\% of the sessions are respectively categorized as `Idle', `Code', and `Debug'. From this observation 
+%we state that when switching states, programmers' tend to remain in any of these three states while remaining highly productive.    
+%If future studies can replicate these observations then programmers can be encouraged to involve more in coding and
+%debugging activities to remain highly productive.  
+%Future studies can investigate these observations, and if these observations hold across significant empirical studies we
+%can recommend programmers to do less amount of state switching when they are in highly productive mode.
+%IDE plugins can track programmers' switching of states for specific time windows, collect appropriate
+%metrics, and alert programmers accordingly.  
+%
+%
+%
+%\begin{figure}[htbp]
+%\centering
+%\includegraphics[scale=0.30]{img/disc_p_ss.png}
+%%\includegraphics[scale=0.30]{img_pdf/disc_p_ss.pdf}
+%\caption{Frequency of State Switching for High Productive Sessions}
+%\label{disc_p_ss}
+%\end{figure}
+
+%\subsection{Research Aspects} 

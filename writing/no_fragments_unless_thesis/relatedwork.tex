@@ -1,0 +1,50 @@
+\section{Background and Related Work}
+In this section we define the necessary concepts used in our paper and prior academic studies that are related to this paper.
+
+%\subsection{Brief Overview of Relevant Software Artifacts}
+%Codealike tracks programmer related information for two IDEs namely, Eclipse, and Microsoft Visual Studio (MSVS). In our study we conduct empirical analysis on a dataset that corresponds to the programmers' activities tracked in MSVS.  In MSVS, software artifacts that are necessary to create an application belong to a container called \textit{solution}. In MSVS, an application can be created in a certain programming languages such as C\#, Visual Basic, and J\#. A solution can consist multiple \textit{projects}. A project corresponds to a virtual directory hierarchy and all the files belonging to the project. These files can be configuration files, source code files written in a certain programming language, test cases etc. A project also contains the necessary file system paths to the necessary items and build settings. For creating an application if an object-oriented programming language is chosen such as C\#, then source files can belong to different \textit{namespaces}. A namespace is an object-oriented organization concept that allows for organization of different program elements namely, variables, methods, classes etc. Conceptually namespaces in C\# or C++ are same as \textit{packages} in Java or ADA ~\cite{kurtev:namespace}.
+
+\subsection{Codealike}
+Codealike \footnote{http://codealike.com/} is an automated tool for personal software process. Codealike can be added the Microsoft Viual Studio (MSVS) IDE as a plugin. Codealike can track different software artifacts relevant to MSVS such as projects, namespaces, and files as well as programming activities such as coding, debugging, and building. In our study we used a dataset that consisted programmingtraces of different programmers all across the world that use Codealike. 
+
+The dataset that we use in our study is a JSON file that included programming related information of different programmers, as JSON objects. Each of these JSON objects represent a programmer's activity traces. Each JSON object contains a set of fields that represent a programmer's activity trace. 
+
+The `sessions' field is a collection of `session' objects. A `session' object is a collection of properties such as, `SessionID', `Path', and `State'. The `Path' property represents the relative path inside the MSVS IDE, whereas, `State' corresponds to one of the seven programming states that a programmer have used. The `Path' field is a string of the format ``a:b:c:d:e'' where `a' represents a project context or a domain. A `project context' corresponds to a virtual directory hierarchy that contain all the files related to the project such as configuration files, source files, and test cases. `b' represents the name of the associated file, `c' represents the name of the associated `namespace', `d' represents the associated `class', and `e' represents the name of the associated member.  The `State' field is a numeric value where each a certain value indicates a specific state. The states None, Idle, System, Code, Debug, and Build are respectively represented by numerals -1, 0, 1, 2, 3, 4, and 5.
+%Except for `Path', all the fields are numeric. `E\_StartTicks', and `E\_EndTicks' is measured in micro-ticks that is equal to $10^{-7}$ micro-ticks. 
+%Codealike tracks six programming related events inside a MSVS IDE. They are: tracking focus of the mouse for a file, tracing if a file is being changed or not, tracing a solution being opened, tracing a solution being closed,  tracing the status of building a solution, tracing the status of building a project.
+
+%\subsection{Dataset}
+
+
+\subsection{Assumption and Definitions}
+The following concepts are related to our study and we define them as following:
+\subsubsection{Programming Related States}
+A programming related state refers to a specific state of a programmer that is related to software development.  Codealike considers seven states namely, `None', `Idle', `System', `Code', `Debug', and `Build'. In addition to these six states, we also consider an additional programming state called `Navigation'. Codealike does not explicitly track this state and we use our own methodology to detect navigation activities from the dataset of interest.    
+%In our paper we consider the following states that we consider in this paper
+%are `idle`, `system`, `code`, `debug`, and `build`.
+We refer to a programming related state as `state' for the rest of this paper.
+\subsubsection{Session}
+A session is a collection of a programmer's programming related activities for a \textit{specific} period of time.
+\subsubsection{Time Window of Interest}
+Time window of interest refers to a specific snapshot of a complete session and is measured in minutes. We refer to time window of interest as window for the rest of this paper. Sessions can vary widely in duration depending on how programmer activity traces were collected. To account such wide range variability and simplify our analysis we use window as the measurement unit in our study. Sessions are divided into segments that have the same duration as the window duration. We use windows answer all the three research questions. In our analysis we use window as parameter and vary this parameter in terms of duration such as one minute, five minutes and ten minutes. As shown in Section 3, each session is divided into segments based on the duration of each selected window.
+\subsubsection{Programmer Productivity}
+In this paper programmer productivity measures how frequently a programmer maintains a specific set of programming related states for a certain time window of interest. We refer to programmer productivity as productivity for the rest of this paper.
+
+\subsubsection{Context Switching}
+Context switching is the actiity of switcing from one artifact or one programmign state to another. In short we refer to context switching as `switching', and each type of context switches such as domain switches and file switches as `switches' in short. Switches can be divided into two broad categories: artifcat and state. Artifact switches correspond to switches related to programmer's relative path inside a MSVS IDE. Satte switches relate to programmer's switching between one programming state to another.   
+
+In our study we assume that between two segemnts $s1$ and $s2$ only one type of artifact related switching such as domain switches and file switches can happen. For example, between $t1$ and $t2$ either a domain switch or a file switch can happen but not both. 
+
+\subsection{Related Work}
+
+\begin{itemize}
+\item{ ~\cite{lungu:devinfoneed} }
+\item{ ~\cite{kevic:banita:changetask} }
+\item{ ~\cite{robilliard:task:icpc} }
+\item{ ~\cite{Parnin:Resumption} }
+\item{ ~\cite{Ko:tse} }
+\end{itemize}       
+
+
+
+

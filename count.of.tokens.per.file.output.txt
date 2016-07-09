@@ -1,0 +1,11 @@
+Count of tokens for C-git-master-filtered_file_.xml.dump is 247303
+Count of tokens for C-Sel-redis-filtered_file_.xml.dump is 183295
+Count of tokens for CSharp-ShareX-master-filtered_file_.xml.dump is 788962
+Count of tokens for Java-Douya-master-filtered_file_.xml.dump is 781618
+Count of tokens for Java-RxJava-master-filtered_file_.xml.dump is 560690
+Count of tokens for Java-SeeWeather-master-filtered_file_.xml.dump is 164263
+-----
+Count of tokens for C-myhtml-master-filtered_file_.xml.dump is 50278
+Count of tokens for CSharp-Opserver-master-filtered_file_.xml.dump is 27582
+-----
+Count of tokens for CSharp-BenchmarkDotNet-master-filtered_file_.xml.dump is 8807

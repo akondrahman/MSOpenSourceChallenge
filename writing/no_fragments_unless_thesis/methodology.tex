@@ -1,0 +1,230 @@
+\section{Methodology}
+We organize this section as follows: first we provide details 
+on how we extract programmer activity traces for each programmer from the dataset.
+Next we present hoe we calculate programmer productivity as calculation of programmer productivity is relevant to answer all the three research questions. 
+Then we provide details on actions that we took to answer the three research questions.   
+%Figure~\ref{meth} presents the steps that we use to perform this empirical study. 
+%
+%
+%\begin{figure}[htbp]
+%\centering
+%\includegraphics[scale=0.30]{img/meth.PNG}
+%%\includegraphics[scale=0.30]{img_pdf/meth.pdf}
+%\caption{Main Steps of the Research Study}
+%\label{meth}
+%\end{figure}
+
+\subsection{Data Extraction}
+\label{dataextract}
+%In our paper we use a dataset that contain programmers' interactions in a MSVS
+%environment as they were performing software development tasks. 
+We observe that analyzing the dataset of interest ina raw format is non-trivial, as all the activity traces of all the programmers are compressed into one file. We used a parsing program written in JavaScript, that parses the dataset and spits the entire dataset into activity trace files for all the programmers to extract the activity traces of each programmer. The JavaScript program uses the `name' field to identify the name of the programmer, and the `sessions' fields to the programmer's activity traces. Furthermore, we used the `Path' property within each `session' field to determine the types of files used by programmers. Empirical findings related to this step are presented in the next section.  
+
+\subsection{Calculating Programmer Productivity}
+\label{productivity}
+We use window as a measurement unit to calculate programmer productivty 
+for multiple sessions.  
+We rely on prior work to quantify programmer productivity. Similar to Corley et al. [reff-Corley], we use a growth function to calculate 
+programmer productivity. The growth function is presented as following: 
+\begin{equation}
+f = C / (1 + A * exp^{ -2 * B * count} )
+\end{equation}
+\begin{equation}
+offset = C / (1+A)
+\end{equation}
+\begin{equation}
+productivity = (( f - offset ) / (C - offset ) ) * 100
+\end{equation}
+Here, C = 100, A = 8, B = 0.02, and count = count of states that happened in
+a particular segment. Please recall that a segment is part of a session. 
+To calculate programmer productivity score for a session we divide the session into $\floor{session length/window length}$ segments. The growth function takes the count of programming states that occur in a certain segment, and gives a productivity score for the segment. We derive the productivity score of a session by taking the average of the productivity scores for all segments within a session. 
+
+If a session has a productivity score of at least one then we term that session as a `highly productive' session, other wise it is a `low productive' session. As all our research questions are related to 
+more productivity of programmers we use `high productive' sessions throughout the paper. 
+
+%\subsection{Data Preprocessing}
+%\label{dataprep}
+%The collected dataset is 1.2 Gigabyte JSON file that contains all the related %programming traces of 339 programmers, collected by Codealike. To get the relevant %programming traces for each of these 339 programmers we use a Javascript program that %parses the entire JSON file and splits out 339 individual JSON files. Each of these 339 %JSON files correspond to the programming traces of 339 different programmers, and are %stored in a directory. In the next phases of our analysis we used this set of 339 JSON %files. As each of these 339 files correspond to the programming activity traces of 339 %different users, for the rest of the paper we refer to each of these 339 JSON files as %\textit{users}. The collected dataset has 339 users. 
+
+%We organize the rest of the section with respect to the research questions of interest. %In each of the following subsections we describe the steps to answer the three research 
+%questions of interest. We use Python scripts to implement all the other steps of our %study. These scripts are available online\footnote{https://github.ncsu.edu/CSC510-%Fall2014/Empirical-CodeALike}.
+
+%\subsection{RQ1}
+%Our study focuses on the effects of different types of context switching on programmer productivity. The first step of performing this
+%investigation is to categorize all sessions into different states. The
+%motivation of performing this particular activity is to gain insight on the
+%distribution of states across all sessions. This insight can tell us the states
+%that the programmers' use, and provide a better understanding of the state
+%switching that occurs for a certain session.
+%To categorize all the sessions for a user we perform the following steps:
+%\begin{itemize}
+%\item{for each session:
+%\begin{itemize}
+%\item{for each state of interest namely, none, idle, system, code, debug, build, and navigation
+%\begin{itemize}
+%\item{we calculate the total count of the state occurring for this session }
+%\item{we calculate the total duration corresponding to the state occurring for
+%this session using `E\_StartTicks', and `E\_EndTicks' }
+%\item{we calculate \textit{time\_per\_state} for each state of interest, where
+%\textit{time\_per\_state} = \textit{total duration of state}/\textit{total count of state}}
+%\end{itemize}
+%}
+%\item{after calculating \textit{time\_per\_state} for all states of interest we
+%designate a state as a \textit{leader state}, for this session if it has the
+%largest \textit{time\_per\_state} value.}
+%\item{The session is categorized by its \textit{leader state}.}
+%\end{itemize}
+%}
+%\end{itemize}
+%We perform the above mentioned 
+%steps to categorize all sessions that exist across all 339 users.
+%
+%To illustrate our steps we use an imaginary example. Lets's assume for an
+%imaginary session, the \textit{time\_per\_state} values for the states None,
+%Idle, System, Code, Debug, Build, and Navigation respectively is 
+%1.1, 2.5, 0.4, 12.18, 3.6,
+%25.7, and 7.23. According to our methodology the \textit{leader state} is Build, and this
+%imaginary session will be categorized as a `Build' session. 
+%
+%Please note that the `Navigation' state is not explicitly tracked by Codealike, and we use our
+%own methodology to trace `Navigation' activities of 339 users. To trace these navigation activities of a user our methodology detects if the `Path' field is changed. \textit{Total count of navigation} refers to the total count of the `Path' field being changed for one session. \textit{Total duration of navigation}
+%refers to the total duration of the `Path' field being changed using the `E\_StartTicks', and `E\_EndTicks' fields.
+%
+%\subsection{RQ-2: How can productivity of programming sessions be measured?}
+%The second step to measure the effects of different types of context switching on programmer productivity is to assemble a set of actions to measure programmer productivity. To measure programmer productivity we count of the programming states that occurred for a specific window across different sessions for a programmer. Next we use the following equations to calculate productivity during that window. The equation has one variable which is the count of programming states.
+%[need info on how we got this equation - Dr. Parnin]
+%\begin{equation}
+%f = C / (1 + A * exp^{ -2 * B * count} )
+%\end{equation}
+%\begin{equation}
+%offset = C / (1+A)
+%\end{equation}
+%\begin{equation}
+%productivity = (( f - offset ) / (C - offset ) ) * 100
+%\label{prod}
+%\end{equation}
+%Here, C = 100, A = 8, B = 0.02, and count = count of states that happened in
+%that particular window. We label window as $n$ which is measured in minutes and
+%can be of different lengths such as five, 10, 15, and 30 minutes.
+%To summarize we perform the following steps to calculate productivity for each
+%session:
+%\begin{itemize}
+%\item{for each session:
+%\begin{itemize}
+%\item{we divide the session into buckets of $n$ minutes; e.g. if we have a
+%session of length 10 minutes, then for $n=5$ we will have two buckets for that
+%session}
+%\item{for each snapshot we calculate the productivity using
+%equation~\ref{prod}}
+%\item{to calculate the productivity of a session we take the average
+%productivity values of all the buckets}
+%\item{we assign the average productivity of all buckets for a session, as the
+%productivity for that particular session}
+%\item{we label a session's productivity as `high' if the productivity score is greater than or equal to one}
+%\item{we label a session's productivity as `low' if the productivity score is less than one}
+%\end{itemize}
+%}
+%\end{itemize}
+%If a session's duration is less than $n$, then we assign zero for that session's
+%productivity score. 
+%
+%To illustrate our methodology of calculating productivity we
+%use an imaginary example. Let us assume we want to determine the productivity of
+%a session that has a duration of 10 minutes. Let us assume we assuming window,
+%$n=5$ here. We will have two buckets for this imaginary session, and we will
+%take the average of the productivity values that we obtain for these two
+%buckets. For example, if the productivity score for these two scores are 11, 31
+%then productivity score for the session is 21. Please note that if we select $n
+%> 10$ for the same imaginary session, our methodology will assign zero
+%productivity score. In our study we consider five windows of different duration: a window of one minute, a window of five minutes, a window of 10 minutes, a window of 15 minutes, and a window of 30 minutes.
+
+\subsection{RQ1}
+\label{switches}
+
+Using our background knowledge, and assumptions presented in Section 2, we hypothesize that two fields `Path', and `State' can be used to detect different types of context switching based on the following observations: 
+\begin{itemize}
+\item{As `Path' presents a programmer's use of a certain artifact at a certain point of time, we can use this property to trace how may time the programmer has moved between different types of artifacts such as domain, file, and namespace.}
+\item{As `State' presents a programmer's use of a certain programming action, we can 
+use this property to trace how many times the programmer has moved between different programming actions such as code, debug, and build.}
+\end{itemize}  
+The `Path' property contains information related to five different artifacts implying the possibility of detecting five different types of context switches from the `Path' property. We exclude a certain type of context switch if it is too fine grained to infer useful information out of it. We observe that the two artifacts `class', and `member' are too fine grained to useful information relevant to context switching, and thus we exclude these two potential types of context switches from our study. 
+
+We use windows as our measurement unit for each session to calculate the amount of various types of switches. We maintain seperate counters for each potenital switch. We first divide each session into $\floor{session length / window length}$ segments to quantify the different context switches. For each segment we extract the values for class, domain, file, member, namespace, and state properties. 
+If the values are different for the `State' property then we detect a state switch, and increment the counter accordingly. Considering our assumption of 
+artifact related switches, we first compare the values of domains first. If there is a difference then we increment the corresponding counter, and do not consider any other related switches. We consider detecting and quantifying file switches if the values for doamin are same across two segments. In the same manner we detect and quantify namespace, class, and member switches if the values for file, namespace, and class, respectively are the same. We detect artifact switches in this manner to be consistent with the organization of artifacts inside a MSVS IDE.   
+ 
+The corresponding counters for each switches remain unchanged if there is no difference or the value for a specific switch is an empty. We divide the count
+for each type of switch by the number of segments to determine the amount of 
+switching for each context type. We repeat the above mentioned procedure for five windows of different durations: one minut, five minutes, 10 minutes, 15 minutes, 
+and 30 minutes.     
+
+We use an imaginary example to illustrate even further. 
+Let us assume we have a session of length 15 minutes. 
+If we use a window of five minute duration we then we will have three segments. 
+If the values of the `Path' for the first, second, and third segment 
+respectively is "a:b:c:d:e", "v:b:x:d:z", and "v:c:p:q:r", where each of the literals are non-empty then  the amount of domain, file, and namespace will be 
+0.33, 0.33, and 0.00, respectively. For same session, if state values for the three segments are respectively 2, 3, and 4, then we the amount of state switching is 0.67.   
+
+  
+
+
+\subsection{RQ2}
+\label{effect}
+Answering RQ2 requires quantifying the occurrences of different types of context switches, calculating programmer productivity, and applying a technique that will illustrate the relationship between productivity and different types of context switches. The relationship will highlight the effect of different types of context switches on programmer productivity. Previously in this section we have presented how we calculate the occurrences of various types of context switches in Section ~\ref{switches}, and programmer productivity for a session in Section ~\ref{productivity}. We use the same procedure here to calculate occurrences of different types of context switches, and programmer productivity. 
+
+Academicians have previously used correlation measure such as Pearson, Spearman, and MIC to investigate the effect of one variable on another [reff needed]. Pearson and Spearman correlations capture the linear relationship between two statistically dependent variable, whereas, MIC captures the non-linear relationship. Taking inspiration from prior work that have used correlation measures we use three correlation metrics namely, MIC, Pearson, and Spearman to investigate any existing effect of different types of context switches and programmer productivity. Along with correlation co-efficients 
+we also record the p-values because with respect to 
+correlation coefficients p-values state whether or not a correlation is happening by chance, and not for the relationship between two variables[reff. needed].      
+
+As effects of different types of context switching can be different for different programmers we observe the necessity of conducting analysis in two stages considering the fact. In the first stage we focus on an individual programmer and investigate what are the effects of various context switches 
+on different levels fo programmer productivity. In the second stage we investigate if 
+the affects are same or different for all the programmers in the dataset. In the following two subsections we discuss how we attempt the two stages of investigation. 
+In both stages we apply our knowledge of calculating programmer productivity, and occurrences of different types of context switching.
+ 
+\subsubsection{Effects of Context Switches for Individual Programmers}
+We performed the following steps to quantify the effects of context switching for 
+individual programmers as following:
+\begin{itemize}
+\item{First, we create a list that holds the productivity values for all sessions
+which had a productivity score greater than or equal to one. For convenience we refer to this list as \textit{high productivity vector}. }
+\item{Then, for each type of context switching we create two separate lists: one list corresponds to the occurrences of a specific context switch for sessions that have a productivity score of at least one. For convenience we refer to this list as \textit{high switch\_x vector}, where x refers to a certain context switch such as `class', `domain', and `file'. Thus if there are three types of context switches then we will create six lists for each programmer.}
+ 
+\item{We apply three correlation measures Pearson, Spearman, and MIC between high productivity vector and one of the\textit{high switch\_x vector}. Apply the same procedure for all type of switches.}
+
+\end{itemize} 
+
+\subsubsection{Effects of Context Switches for All Programmers}
+From the previous subsection we obtained a set of lists 
+for each programmer. We use these set of lists to calculate the effects of context switches for all programmers. The steps we follow are provided below:
+\begin{itemize}
+\item{First, we combine the \textit{high productivity vectors} of all programmers into one list and call it as \textit{overall high productivity vector}. }
+\item{Then, for each type of context switching we create two separate lists: we create the \textit{overall high switch\_x vector} by merging the \textit{high switch\_x vectors} of all programmers. }
+ 
+\item{We apply three correlation measures Pearson, Spearman, and MIC between \textit{overall high productivity vector} and one of the\textit{overall high switch\_x vector}. We apply  the same procedure for all type of switches i.e. if there are three types of switches then we will apply the same procedure for all of the three types of context switches.}
+
+\end{itemize}
+
+\subsection{RQ3}
+
+In Section ~\ref{effect} we have considered the effects of various switches to be linear as well as non-linear and used different metrics to calculate those effects. For consistency we answer RQ3 in the same manner. Our underlying methodology to investigate the switches that are advantageous or disadvantageous remains the same for both liner and non-linear perspectives; the difference lies within the use of correlation co-efficient i.e. with respect to linearity we use Pearson and Spearman as correlation coefficients, and MIC for non-linearity. We present the procedure as following:  
+
+For a certain window, a context switch is advantageous if both conditions \textit{C1-A}, and \textit{C2-A} are true. Similarly, a context switch is advantageous if both conditions \textit{C1-D}, and \textit{C2-D} are true. The conditions \textit{C1-A, C2-A, C1-D, C2-D} are presented as following:   
+
+\begin{itemize}
+\item{\textit{C1-A}: the correlation co-efficient between the \textit{overall high productivity vector} and the \textit{high switch\_x vector} is greater than or equal to 0.20. In case of linearity measure 
+we will use two correlation coefficients Pearson, and Spearman, and for both these correlation coefficients the condition must be true.}
+
+\item{\textit{C2-A}:the p-value for the obtained correlation coefficient is less than or equal to 0.05}
+
+\item{the correlation coefficient between the \textit{overall high productivity vector} and the \textit{high switch\_x vector} is less than or equal to -0.20. In case of linearity measure we will use two correlation coefficients Pearson, and Spearman, and for both these correlation coefficients the aforementioned condition must be true.}
+
+\item{the p-value for the obtained correlation coefficient is less than or equal to 0.05}
+\end{itemize}
+
+If a context switch is not marked as advantegous or disadvantageous then we mark it as an `inert' switch.  We apply the above mentioned procedure five windows of durations: one minute, five minutes, 10 minutes, 15 minutes, and 30 minutes for all context switches of interest. 
+
+If a switch is marked as advantageous for three out of the windows of interest then we mark that switch as advantageous for productivty when programmers are more productivty. 
+Similarly a switch is marked disadvantageous or inert if the switch is marked as disadvanatageous or inert respectively for three out of the five windows of interest. 
+ 
+
+ 

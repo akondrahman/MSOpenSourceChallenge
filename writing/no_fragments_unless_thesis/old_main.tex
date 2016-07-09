@@ -1,0 +1,155 @@
+\documentclass{acm_proc_article-sp}
+\usepackage{graphicx}
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\newcommand\floor[1]{\lfloor#1\rfloor}
+
+
+\begin{document}
+
+\title{Quantifying The Affects of Context Switching On Programmer Productivity}
+
+%
+% You need the command \numberofauthors to handle the 'placement
+% and alignment' of the authors beneath the title.
+%
+% For aesthetic reasons, we recommend 'three authors at a time'
+% i.e. three 'name/affiliation blocks' be placed beneath the title.
+%
+% NOTE: You are NOT restricted in how many 'rows' of
+% "name/affiliations" may appear. We just ask that you restrict
+% the number of 'columns' to three.
+%
+% Because of the available 'opening page real-estate'
+% we ask you to refrain from putting more than six authors
+% (two rows with three columns) beneath the article title.
+% More than six makes the first-page appear very cluttered indeed.
+%
+% Use the \alignauthor commands to handle the names
+% and affiliations for an 'aesthetic maximum' of six authors.
+% Add names, affiliations, addresses for
+% the seventh etc. author(s) as the argument for the
+% \additionalauthors command.
+% These 'additional authors' will be output/set for you
+% without further effort on your part as the last section in
+% the body of your article BEFORE References or any Appendices.
+
+\numberofauthors{5} %  in this sample file, there are a *total*
+% of EIGHT authors. SIX appear on the 'first-page' (for formatting
+% reasons) and the remaining two appear in the \additionalauthors section.
+%
+\author{
+% You can go ahead and credit any number of authors here,
+% e.g. one 'row of three' or two rows (consisting of one row of three
+% and a second row of one, two or three).
+%
+% The command \alignauthor (no curly braces needed) should
+% precede each author name, affiliation/snail-mail address and
+% e-mail address. Additionally, tag each line of
+% affiliation/address with \affaddr, and tag the
+% e-mail address with \email.
+%
+% 1st. author
+\alignauthor
+A\\
+       \affaddr{Blah Blah}\\
+       \affaddr{Blah Blah}\\
+       \affaddr{Blah, Blah}\\
+       \email{blah@blah.com}
+% 2nd. author
+\alignauthor
+B\\
+       \affaddr{Blah Blah}\\
+       \affaddr{Blah Blah}\\
+       \affaddr{Blah, Blah}\\
+       \email{blah@blah.com}
+% 3rd. author
+\alignauthor
+C\\
+       \affaddr{Blah Blah}\\
+       \affaddr{Blah Blah}\\
+       \affaddr{Blah, Blah}\\
+       \email{blah@blah.com}
+\and  % use '\and' if you need 'another row' of author names
+% 4th. author
+\alignauthor
+D\\
+       \affaddr{Blah Blah}\\
+       \affaddr{Blah Blah}\\
+       \affaddr{Blah, Blah}\\
+       \email{blah@blah.com}
+% 5th. author
+\alignauthor
+E\\
+       \affaddr{Blah Blah}\\
+       \affaddr{Blah Blah}\\
+       \affaddr{Blah, Blah}\\
+       \email{blah@blah.com}
+}
+
+
+\maketitle
+\begin{abstract}
+Abstract goes here ...
+\begin{itemize}
+\item{Generic statement: context switching good/bad}
+\item{The problem: how do we know what types of switching is googd or bad for programmer productivity}
+\item{The solution: correlation analysis}
+\item{Goal statement}
+\item{Methodology}
+\item{Results}
+\item{Final take away}
+\end{itemize}
+\end{abstract}
+
+% A category with the (minimum) three required fields
+\category{H.4}{Information Systems Applications}{Miscellaneous}
+%A category including the fourth, optional field follows...
+\category{D.2.8}{Software Engineering}{Metrics}[complexity measures, performance measures]
+
+\terms{Theory}
+
+\keywords{programmer productivity, context switching, interleaving, software projects}
+
+\input{intro}
+
+\input{relatedwork}
+
+\input{methodology}
+
+
+\input{results}
+\input{discussion}
+
+\section{Conclusion}
+Conclusion goes here.
+
+%ACKNOWLEDGMENTS are optional
+%\section{Acknowledgments}
+%This section is optional; it is a location for you
+%to acknowledge grants, funding, editing assistance and
+%what have you.  In the present case, for example, the
+%authors would like to thank Gerald Murray of ACM for
+%his help in codifying this \textit{Author's Guide}
+%and the \textbf{.cls} and \textbf{.tex} files that it describes.
+
+%
+% The following two commands are all you need in the
+% initial runs of your .tex file to
+% produce the bibliography for the citations in your paper.
+\bibliographystyle{abbrv}
+\bibliography{icpc2016}
+% You must have a proper ".bib" file
+%  and remember to run:
+% latex bibtex latex latex
+% to resolve all references
+%
+% ACM needs 'a single self-contained file'!
+%
+%APPENDICES are optional
+%\balancecolumns
+
+\balancecolumns
+% That's all folks!
+\end{document}
