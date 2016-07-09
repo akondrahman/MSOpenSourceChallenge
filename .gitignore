@@ -1,0 +1,14 @@
+/scripts/*.pyc
+*.log
+*.blg
+*.bbl
+*.aux
+*.lot
+*.lof
+*.out
+*.toc
+*.fmt
+*.tps
+*.synctex
+*.synctex.gz
+*.synctex.gz(busy)
